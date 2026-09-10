@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Welcome Sayang — Ica 💙</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:system-ui,Arial,sans-serif;overflow-x:hidden;color:#06384f;
+  background:#dff9ff;
+}
+.page{min-height:100vh;display:none;position:relative;overflow:hidden}
+.page.active{display:block}
+button,a{font:inherit}
+a{text-decoration:none}
+
+/* ---------- COMMON NEO NAV ---------- */
+.nav{
+ position:fixed;z-index:100;left:50%;top:15px;transform:translateX(-50%);
+ width:min(1080px,calc(100% - 24px));display:flex;align-items:center;justify-content:space-between;
+ background:#fff;border:4px solid #07151d;box-shadow:7px 7px 0 #07151d;padding:10px 12px;
+}
+.logo{font-weight:1000;color:#07151d;white-space:nowrap}
+.logo b{background:#ff9fcf;border:3px solid #07151d;padding:3px 7px}
+.links{display:flex;gap:7px}
+.links a{
+ padding:8px 11px;background:#67ddff;color:#07151d;border:3px solid #07151d;
+ box-shadow:4px 4px 0 #07151d;font-weight:1000;font-size:12px;cursor:pointer
+}
+.links a:nth-child(2){background:#ff9fcf}.links a:nth-child(3){background:#fff078}.links a:nth-child(4){background:#a9f58c}
+.links a:hover{transform:translate(3px,3px);box-shadow:1px 1px 0 #07151d}
+
+/* ---------- HOME: CANDY + SAKURA + OCEAN ---------- */
+#home{
+ background:
+  radial-gradient(circle at 12% 25%,#ff9dcb 0 7%,transparent 22%),
+  radial-gradient(circle at 88% 20%,#8beaff 0 8%,transparent 27%),
+  linear-gradient(135deg,#07426a 0%,#0aa8ca 48%,#dffbff 100%);
+ color:white;
+}
+.home-content{min-height:100vh;display:grid;place-items:center;text-align:center;padding:110px 18px 40px}
+.home-card{width:min(900px,100%);padding:35px 20px}
+.pill{display:inline-block;border:2px solid #fff8;background:#063e5dcc;padding:8px 14px;border-radius:999px;font-size:11px;letter-spacing:2px}
+.welcome{
+ font-size:clamp(60px,14vw,145px);line-height:.82;margin:25px 0 18px;font-weight:1000;
+ text-shadow:5px 7px 0 #06384f;
+}
+.gradient-text{
+ background:linear-gradient(90deg,#fff,#ffd1e6,#8cecff,#fff);background-size:250%;
+ -webkit-background-clip:text;color:transparent;animation:shine 5s infinite
+}
+@keyframes shine{50%{background-position:100%}}
+.home-sub{max-width:600px;margin:auto;line-height:1.7;color:#effcff}
+.home-btn{
+ display:inline-block;margin-top:25px;padding:15px 25px;background:#fff;color:#06384f;
+ border:4px solid #07151d;box-shadow:7px 7px 0 #07151d;font-weight:1000;
+}
+.home-btn:active{transform:translate(6px,6px);box-shadow:1px 1px 0 #07151d}
+
+/* candy floating shapes */
+.candy{position:absolute;border:3px solid #ffffff70;border-radius:50%;filter:blur(.2px);animation:float 5s ease-in-out infinite}
+.c1{width:90px;height:90px;left:5%;top:25%;background:#ff9dcc77}.c2{width:55px;height:55px;right:7%;top:35%;background:#fff77c88;animation-delay:1s}
+.c3{width:120px;height:120px;right:13%;bottom:9%;background:#73e7ff66;animation-delay:2s}
+.c4{width:45px;height:45px;left:14%;bottom:12%;background:#fff8;animation-delay:.5s}
+@keyframes float{50%{transform:translateY(-22px) rotate(10deg)}}
+
+/* REALISTIC 3D SAKURA FLOWER */
+.flower{
+  width:240px;height:240px;margin:4px auto 12px;position:relative;
+  perspective:900px;transform-style:preserve-3d;
+  animation:flowerFloat 5s ease-in-out infinite;
+  filter:drop-shadow(0 25px 22px #002c4738);
+}
+@keyframes flowerFloat{
+  0%,100%{transform:rotateX(3deg) rotateY(-7deg) translateY(0)}
+  50%{transform:rotateX(8deg) rotateY(9deg) translateY(-13px)}
+}
+.flower::after{
+  content:"";position:absolute;left:50%;bottom:3px;transform:translateX(-50%);
+  width:130px;height:22px;border-radius:50%;background:#001d3030;filter:blur(10px);
+}
+.stem{
+  position:absolute;z-index:0;left:113px;top:145px;width:14px;height:88px;
+  border-radius:999px;background:linear-gradient(90deg,#176d4a,#55bd76 45%,#0d593b);
+  transform:rotate(4deg);box-shadow:inset 3px 0 3px #ffffff55;
+}
+.leaf{
+  position:absolute;z-index:1;width:72px;height:34px;border-radius:100% 0 100% 0;
+  background:linear-gradient(135deg,#b8f6a0,#3da96b 55%,#17613f);
+  box-shadow:inset 5px 4px 7px #ffffff55,inset -7px -6px 10px #08442b66;
+}
+.leaf::after{
+  content:"";position:absolute;left:9px;top:16px;width:56px;height:2px;
+  background:#d9ffcc99;transform:rotate(-17deg);transform-origin:left;
+}
+.leaf.l1{left:62px;top:174px;transform:rotate(-24deg)}
+.leaf.l2{right:52px;top:160px;transform:scaleX(-1) rotate(-8deg)}
+.petal{
+  position:absolute;z-index:2;left:86px;top:43px;width:69px;height:119px;
+  transform-origin:50% 88%;border-radius:62% 38% 72% 32% / 64% 58% 42% 36%;
+  background:
+    radial-gradient(ellipse at 35% 18%,#fff 0 5%,transparent 22%),
+    linear-gradient(155deg,#fffafc 0%,#ffdce9 30%,#ff9ec5 67%,#d34e8f 100%);
+  border:1px solid #ffffffcc;
+  box-shadow:inset 8px 7px 11px #fff9,inset -12px -16px 17px #9e2e6755,0 8px 15px #01364a28;
+}
+.petal::after{
+  content:"";position:absolute;left:31px;top:18px;width:2px;height:75px;
+  border-radius:50%;background:linear-gradient(#fff9,#d95c9566);
+  transform:rotate(10deg);filter:blur(.3px);
+}
+.petal.p1{transform:rotate(0deg) translateY(-27px) scale(1.04)}
+.petal.p2{transform:rotate(45deg) translateY(-27px)}
+.petal.p3{transform:rotate(90deg) translateY(-27px)}
+.petal.p4{transform:rotate(135deg) translateY(-27px)}
+.petal.p5{transform:rotate(180deg) translateY(-27px)}
+.petal.p6{transform:rotate(225deg) translateY(-27px)}
+.petal.p7{transform:rotate(270deg) translateY(-27px)}
+.petal.p8{transform:rotate(315deg) translateY(-27px)}
+.inner-petal{
+  position:absolute;z-index:4;left:98px;top:65px;width:57px;height:92px;
+  transform-origin:50% 88%;border-radius:65% 35% 70% 30%;
+  background:
+    radial-gradient(ellipse at 35% 16%,#fff 0 7%,transparent 25%),
+    linear-gradient(150deg,#fff,#ffc9e0 42%,#ef6ca8 82%,#b93b79);
+  border:1px solid #fff9;
+  box-shadow:inset 7px 5px 9px #fff8,inset -9px -12px 14px #8f235855;
+}
+.inner-petal.i1{transform:rotate(25deg) translateY(-13px)}
+.inner-petal.i2{transform:rotate(95deg) translateY(-13px)}
+.inner-petal.i3{transform:rotate(165deg) translateY(-13px)}
+.inner-petal.i4{transform:rotate(235deg) translateY(-13px)}
+.inner-petal.i5{transform:rotate(305deg) translateY(-13px)}
+.stamen{
+  position:absolute;z-index:6;left:116px;top:86px;width:8px;height:34px;
+  transform-origin:50% 100%;background:linear-gradient(#ffe89a,#d88635);
+  border-radius:50%;opacity:.9;
+}
+.stamen::before{
+  content:"";position:absolute;left:-4px;top:-6px;width:16px;height:16px;
+  border-radius:50%;background:radial-gradient(circle,#fff6b0,#f2ad3c 55%,#bd6b2b);
+  box-shadow:0 2px 5px #9b4c2d55;
+}
+.s1{transform:rotate(-55deg)}.s2{transform:rotate(-28deg)}
+.s3{transform:rotate(0)}.s4{transform:rotate(28deg)}.s5{transform:rotate(55deg)}
+.flower-center{
+  position:absolute;z-index:7;left:103px;top:101px;width:46px;height:46px;border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 27%,#fff8c5 0 7%,transparent 12%),
+    radial-gradient(circle,#fff1a0 0 20%,#ffc957 22% 45%,#e38c35 48% 70%,#a94d27 72%);
+  box-shadow:0 0 0 5px #ffb8d455,0 0 28px #ffe58d;
+}
+
+/* extra premium polish */
+.home-card{
+  background:linear-gradient(180deg,#063d5b2e,#ffffff08);
+  border-radius:34px;backdrop-filter:blur(5px);
+}
+.home-btn,.wa{border-radius:16px}
+.polaroid{border-radius:8px;overflow:hidden}
+.real-photo{border-radius:4px}
+/* ---------- DASHBOARD: SHORT + CLEAN ---------- */
+#dashboard{background:linear-gradient(145deg,#effcff,#bdefff 55%,#ffd9e9);padding:110px 15px 45px}
+.dash-wrap{width:min(1050px,100%);margin:auto}
+.title{text-align:center;margin:10px 0 20px}
+.title h2{font-size:38px;font-weight:1000}.title p{margin-top:5px;color:#286079}
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.dash{
+ min-height:145px;background:#fff;border:4px solid #07151d;box-shadow:6px 6px 0 #07151d;
+ padding:17px;transition:.15s
+}
+.dash:hover{transform:translate(2px,2px);box-shadow:4px 4px 0 #07151d}
+.dash:nth-child(1){background:#ffb7d7}.dash:nth-child(2){background:#9deeff}
+.dash:nth-child(3){background:#fff28b}.dash:nth-child(4){background:#b8ff9d}
+.dash .ico{font-size:30px}.dash h3{margin:7px 0 4px}.dash p{font-size:13px;line-height:1.45}
+.mini-btn{margin-top:10px;padding:7px 10px;border:3px solid #07151d;background:#fff;font-weight:900;cursor:pointer}
+
+/* ---------- MOMENT: different layout ---------- */
+#moments{background:#ffedf6;padding:120px 18px 70px}
+.moment-wrap{width:min(900px,100%);margin:auto}
+.polaroids{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:25px}
+.polaroid{
+ background:#fff;padding:12px 12px 22px;border:3px solid #07151d;box-shadow:7px 7px 0 #07151d;
+ transform:rotate(-2deg)
+}
+.polaroid:nth-child(2){transform:rotate(3deg);margin-top:28px}
+.polaroid:nth-child(3){transform:rotate(-1deg)}
+.real-photo{
+ height:250px;overflow:hidden;background:#dff9ff;border:2px solid #07151d;
+ display:flex;align-items:center;justify-content:center
+}
+.real-photo img{
+ width:100%;height:100%;object-fit:cover;display:block;
+ transition:.35s
+}
+.polaroid:hover .real-photo img{transform:scale(1.06)}
+
+.polaroid h3{margin-top:12px}.polaroid p{font-size:13px;margin-top:5px;line-height:1.5}
+
+/* ---------- LOVE: different layout ---------- */
+#love{background:linear-gradient(135deg,#053b62,#078eb4 55%,#ffafd1);padding:125px 18px 70px;color:#fff}
+.love-wrap{width:min(850px,100%);margin:auto;text-align:center}
+.heart{
+ width:160px;height:160px;margin:25px auto;position:relative;
+ background:#ff78ad;transform:rotate(-45deg);border:5px solid #07151d;box-shadow:10px 10px 0 #07151d;
+ animation:heartbeat 1.5s infinite
+}
+.heart:before,.heart:after{content:"";position:absolute;width:160px;height:160px;background:#ff78ad;border:5px solid #07151d;border-radius:50%}
+.heart:before{top:-85px;left:-5px}.heart:after{left:75px;top:5px}
+.heart span{position:absolute;z-index:4;transform:rotate(45deg);font-size:50px;left:53px;top:55px}
+@keyframes heartbeat{50%{transform:rotate(-45deg) scale(1.08)}}
+.love-wrap h2{font-size:clamp(42px,9vw,78px);font-weight:1000}
+.love-wrap p{line-height:1.7;max-width:560px;margin:10px auto}
+.wa{
+ display:inline-block;margin-top:20px;padding:16px 25px;background:#fff;color:#06384f;
+ border:4px solid #07151d;box-shadow:7px 7px 0 #07151d;font-weight:1000
+}
+
+/* particles */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:150}
+.particle{position:absolute;top:-30px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(700deg);opacity:0}}
+@media(max-width:800px){
+ .dash-grid{grid-template-columns:1fr 1fr}.polaroids{grid-template-columns:1fr}
+ .polaroid:nth-child(2){margin-top:0}
+}
+@media(max-width:520px){
+ .nav{padding:8px}.logo{font-size:13px}.links{gap:4px}.links a{font-size:9px;padding:6px 5px;box-shadow:3px 3px 0 #07151d}
+ .welcome{font-size:62px}.flower{transform:scale(.76)}.dash-grid{grid-template-columns:1fr 1fr}
+ .dash{min-height:130px;padding:13px}.dash h3{font-size:15px}.dash p{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<!-- SAME NAVIGATION, BUT EACH NAV OPENS A COMPLETELY DIFFERENT PAGE -->
+<nav class="nav">
+  <a href="#home" class="logo"><b>ICA</b> 💙 LOVE</a>
+  <div class="links">
+    <a href="#home">HOME</a>
+    <a href="#dashboard">DASHBOARD</a>
+    <a href="#moments">MOMENT</a>
+    <a href="#love">SAYANG</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section class="page active" id="home">
+ <div class="candy c1"></div><div class="candy c2"></div><div class="candy c3"></div><div class="candy c4"></div>
+ <div class="home-content">
+  <div class="home-card">
+   <span class="pill">🍬 CANDY POP × 🌸 SAKURA × 🌊 OCEAN BLUE</span>
+   <div class="flower" aria-label="Bunga sakura 3D">
+    <div class="stem"></div>
+    <div class="leaf l1"></div><div class="leaf l2"></div>
+    <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div>
+    <div class="petal p5"></div><div class="petal p6"></div><div class="petal p7"></div><div class="petal p8"></div>
+    <div class="inner-petal i1"></div><div class="inner-petal i2"></div><div class="inner-petal i3"></div>
+    <div class="inner-petal i4"></div><div class="inner-petal i5"></div>
+    <div class="stamen s1"></div><div class="stamen s2"></div><div class="stamen s3"></div>
+    <div class="stamen s4"></div><div class="stamen s5"></div>
+    <div class="flower-center"></div>
+   </div>
+   <h1 class="welcome gradient-text">Welcome<br>Sayang 💙</h1>
+   <p class="home-sub">Selamat datang di website kecil yang dibuat khusus untuk Ica. Ada bunga, kejutan, moment, dan satu pesan terakhir di halaman berikutnya. 🌸</p>
+   <a class="home-btn" href="#dashboard">MASUK DASHBOARD →</a>
+  </div>
+ </div>
+</section>
+
+<!-- DASHBOARD SHORT -->
+<section class="page" id="dashboard">
+ <div class="dash-wrap">
+  <div class="title"><h2>💎 Dashboard</h2><p>Pilih bagian yang mau kamu buka.</p></div>
+  <div class="dash-grid">
+   <div class="dash"><div class="ico">🌸</div><h3>Bunga</h3><p>Bunga 3D khusus buat kamu.</p><button class="mini-btn" onclick="flowerPop()">BUKA</button></div>
+   <div class="dash"><div class="ico">🍬</div><h3>Candy Mood</h3><p>Suasana manis dan pastel.</p><button class="mini-btn" onclick="burst('🍬')">✨ WOW</button></div>
+   <div class="dash"><div class="ico">❄️</div><h3>Arctic</h3><p>Nuansa dingin dan biru.</p><button class="mini-btn" onclick="burst('❄️')">❄️</button></div>
+   <div class="dash"><div class="ico">💌</div><h3>Pesan</h3><p>Ada sesuatu di halaman Moment.</p><button class="mini-btn" onclick="location.hash='moments'">BUKA →</button></div>
+  </div>
+ </div>
+</section>
+
+<!-- MOMENT -->
+<section class="page" id="moments">
+ <div class="moment-wrap">
+  <div class="title" style="color:#06384f"><h2>🌸 Little Moments</h2><p>Halaman ini dibuat seperti kumpulan kartu foto.</p></div>
+  <div class="polaroids">
+   <article class="polaroid">
+    <div class="real-photo"><img src="https://files.catbox.moe/gjvt7j.jpg" alt="Moment Ica 1" loading="lazy"></div>
+    <h3>🌸 Moment 01</h3><p>Foto pertama yang disimpan di halaman moment.</p>
+   </article>
+   <article class="polaroid">
+    <div class="real-photo"><img src="https://files.catbox.moe/pk4s7n.jpg" alt="Moment Ica 2" loading="lazy"></div>
+    <h3>💗 Moment 02</h3><p>Satu lagi foto spesial untuk dikenang.</p>
+   </article>
+   <article class="polaroid">
+    <div class="real-photo"><img src="https://files.catbox.moe/ty4zt4.jpg" alt="Moment Ica 3" loading="lazy"></div>
+    <h3>💙 Moment 03</h3><p>Moment terakhir di galeri kecil ini.</p>
+   </article>
+  </div>
+ </div>
+</section>
+
+<!-- LOVE -->
+<section class="page" id="love">
+ <div class="love-wrap">
+  <div class="pill">💙 FINAL MESSAGE</div>
+  <div class="heart"><span>💗</span></div>
+  <h2>I LOVE YOU ICA</h2>
+  <p>Kalau kamu sudah sampai di halaman ini, sekarang waktunya membuka pesan paling terakhir. 😳🌸</p>
+  <a class="wa" href="https://wa.me/6282382240431?text=AKUUU%20SAYANGGG%20KAMUUUU%20AKUU%20CINTAAA%20KAMUUU%20KAMUU%20GANTENG%20BANGETT">💙 SAYANGGG 💙</a>
+ </div>
+</section>
+
+<script>
+function showPage(){
+ const id=location.hash.replace('#','')||'home';
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ const target=document.getElementById(id);
+ (target||document.getElementById('home')).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('hashchange',showPage);
+
+function burst(symbol='💙'){
+ for(let i=0;i<24;i++){
+  const x=document.createElement('span');x.className='particle';x.textContent=symbol;
+  x.style.left=Math.random()*100+'vw';x.style.fontSize=(16+Math.random()*25)+'px';
+  x.style.animationDuration=(1.2+Math.random()*1.5)+'s';
+  document.getElementById('particles').appendChild(x);
+  setTimeout(()=>x.remove(),3000);
+ }
+}
+function flowerPop(){burst('🌸');burst('💗')}
+</script>
+</body>
+</html>
